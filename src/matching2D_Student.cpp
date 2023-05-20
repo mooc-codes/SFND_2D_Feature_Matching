@@ -228,7 +228,7 @@ void detKeypointsModern(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, std:
     }
     else if(detectorType.compare("FREAK") == 0)
     {
-        cv::Ptr<cv::xfeatures2d::FREAK> freak = cv::xfeatures2d::FREAK::create();
+        cv::Ptr<cv::xfeatures2d::FREAK> detector = cv::xfeatures2d::FREAK::create();
         detector->detect(img, keypoints);
     }
     else
