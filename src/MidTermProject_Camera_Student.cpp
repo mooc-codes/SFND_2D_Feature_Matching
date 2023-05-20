@@ -192,6 +192,7 @@ int main(int argc, const char *argv[])
                     combinationData << detType << ", " << 1000 * detTime / 1.0 << ", ";
                     combinationData << descType << ", " << 1000 * descTime / 1.0 << ", ";
                     combinationData << "Keypoints, " << keypoints.size() << "Matches, " << matches.size() << std::endl;
+                    cout<< combinationData;
                     if (combinationFile.is_open())
                     {
                         combinationFile << combinationData.rdbuf();
