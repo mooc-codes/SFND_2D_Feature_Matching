@@ -36,10 +36,8 @@ int main(int argc, const char *argv[])
     int imgFillWidth = 4;  // no. of digits which make up the file index (e.g. img-0001.png)
 
     // misc
-    int dataBufferSize = 2;       // no. of images which are held in memory (ring buffer) at the same time
-    vector<DataFrame> dataBuffer(dataBufferSize); // list of data frames which are held in memory at the same time
     bool bVis = false;            // visualize results
-    std::vector<std::string> detTypes = {"SHITOMASI", "HARRIS", "BRIEF", "FAST", "ORB", "AKAZE", "SIFT"};
+    std::vector<std::string> detTypes = {"SHITOMASI", "FAST", "ORB", "AKAZE", "SIFT"};
     std::vector<std::string> descTypes = {"BRIEF", "FAST", "ORB", "AKAZE", "SIFT", "FREAK"};
     std::vector<std::string> matcherType = {"HARRIS", "SHITOMASI", "BRIEF", "FAST", "ORB", "AKAZE", "SIFT"};
     
@@ -48,7 +46,8 @@ int main(int argc, const char *argv[])
     {   
         for(auto descType : descTypes)
         {
-
+                    int dataBufferSize = 2;       // no. of images which are held in memory (ring buffer) at the same time
+                    vector<DataFrame> dataBuffer(dataBufferSize); // list of data frames which are held in memory at the same time
                     /* MAIN LOOP OVER ALL IMAGES */
                     for (size_t imgIndex = 0; imgIndex <= imgEndIndex - imgStartIndex; imgIndex++)
                     {
