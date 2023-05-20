@@ -43,6 +43,7 @@ int main(int argc, const char *argv[])
     std::vector<std::string> descTypes = {"BRIEF", "FAST", "ORB", "AKAZE", "SIFT", "FREAK"};
     std::vector<std::string> matcherType = {"HARRIS", "SHITOMASI", "BRIEF", "FAST", "ORB", "AKAZE", "SIFT"};
     
+    std::ofstream combinationFile("combination.csv");  
     for(auto detType : detTypes)
     {   
         for(auto descType : descTypes)
@@ -86,7 +87,7 @@ int main(int argc, const char *argv[])
                     //// STUDENT ASSIGNMENT
                     //// TASK MP.2 -> add the following keypoint detectors in file matching2D.cpp and enable string-based selection based on detectorType
                     //// -> HARRIS, FAST, BRISK, ORB, AKAZE, SIFT
-                    double t = (double)cv::getTickCount();
+                    double detTime = (double)cv::getTickCount();
                     if (detectorType.compare("SHITOMASI") == 0)
                     {
                     detKeypointsShiTomasi(keypoints, imgGray, false);
@@ -99,7 +100,7 @@ int main(int argc, const char *argv[])
                     {
                     detKeypointsModern(keypoints, imgGray, detectorType, false);
                     }
-                    t = ((double)cv::getTickCount() - t) / cv::getTickFrequency();
+                    detTime = ((double)cv::getTickCount() - detTime) / cv::getTickFrequency();
                     
                     //// EOF STUDENT ASSIGNMENT
 
@@ -151,9 +152,9 @@ int main(int argc, const char *argv[])
 
                     cv::Mat descriptors;
                     string descriptorType = descType; // BRIEF, ORB, FREAK, AKAZE, SIFT
-                    t = (double)cv::getTickCount();
+                    double descTime = (double)cv::getTickCount();
                     descKeypoints((dataBuffer.end() - 1)->keypoints, (dataBuffer.end() - 1)->cameraImg, descriptors, descriptorType);
-                    t = ((double)cv::getTickCount() - t) / cv::getTickFrequency();
+                    descTime = ((double)cv::getTickCount() - descTime) / cv::getTickFrequency();
                     
                     //// EOF STUDENT ASSIGNMENT
 
@@ -186,10 +187,15 @@ int main(int argc, const char *argv[])
                     (dataBuffer.end() - 1)->kptMatches = matches;
 
                     // cout << "#4 : MATCH KEYPOINT DESCRIPTORS done" << endl;
-                    cout << "----------------------------------------------------" << std::endl;
-                    cout << "Preceeding vehicle has "<<keypoints.size()<<" keypoints "<<std::endl;
-                    cout << detectorType <<" detection with n=" << keypoints.size() << " keypoints in " << 1000 * t / 1.0 << " ms" << endl;
-                    cout << descriptorType << " descriptor extraction in " << 1000 * t / 1.0 << " ms" << endl;
+
+                    std::ostringstream combinationData; // 
+                    combinationData << detType << ", " << 1000 * detTime / 1.0 << ", ";
+                    combinationData << descType << ", " << 1000 * descTime / 1.0 keypoints.size() << ", ";
+                    combinationData << "Keypoints, " << keyPoints.size() << "Matches, " << matches.size() << std::endl;
+                    if (combinationFile.is_open())
+                    {
+                        combinationFile << combinationData.str();
+                    }
 
                     // visualize matches between current and previous image
                     bVis = false;
