@@ -39,7 +39,7 @@ int main(int argc, const char *argv[])
     int dataBufferSize = 2;       // no. of images which are held in memory (ring buffer) at the same time
     vector<DataFrame> dataBuffer(dataBufferSize); // list of data frames which are held in memory at the same time
     bool bVis = false;            // visualize results
-    std::vector<std::string> detTypes = {"HARRIS", "SHITOMASI", "BRIEF", "FAST", "ORB", "AKAZE", "SIFT"};
+    std::vector<std::string> detTypes = {"SHITOMASI", "HARRIS", "BRIEF", "FAST", "ORB", "AKAZE", "SIFT"};
     std::vector<std::string> descTypes = {"BRIEF", "FAST", "ORB", "AKAZE", "SIFT", "FREAK"};
     std::vector<std::string> matcherType = {"HARRIS", "SHITOMASI", "BRIEF", "FAST", "ORB", "AKAZE", "SIFT"};
     
