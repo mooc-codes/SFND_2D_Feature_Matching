@@ -86,7 +86,7 @@ int main(int argc, const char *argv[])
                     //// STUDENT ASSIGNMENT
                     //// TASK MP.2 -> add the following keypoint detectors in file matching2D.cpp and enable string-based selection based on detectorType
                     //// -> HARRIS, FAST, BRISK, ORB, AKAZE, SIFT
-
+                    double t = (double)cv::getTickCount();
                     if (detectorType.compare("SHITOMASI") == 0)
                     {
                     detKeypointsShiTomasi(keypoints, imgGray, false);
@@ -99,6 +99,8 @@ int main(int argc, const char *argv[])
                     {
                     detKeypointsModern(keypoints, imgGray, detectorType, false);
                     }
+                    t = ((double)cv::getTickCount() - t) / cv::getTickFrequency();
+                    cout << detectorType <<" detection with n=" << keypoints.size() << " keypoints in " << 1000 * t / 1.0 << " ms" << endl;
                     //// EOF STUDENT ASSIGNMENT
 
                     //// STUDENT ASSIGNMENT

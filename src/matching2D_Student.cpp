@@ -200,7 +200,6 @@ void detKeypointsHarris(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, bool
 void detKeypointsModern(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, std::string detectorType, bool bVis)
 {
 
-    auto t = (double)cv::getTickCount();
     if (detectorType.compare("FAST") == 0) 
     {
         cv::Ptr<cv::FastFeatureDetector> detector = cv::FastFeatureDetector::create();
@@ -237,10 +236,6 @@ void detKeypointsModern(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, std:
         bVis = false;
     }
    
-    t = ((double)cv::getTickCount() - t) / cv::getTickFrequency();
-    cout << detectorType <<" detection with n=" << keypoints.size() << " keypoints in " << 1000 * t / 1.0 << " ms" << endl;
-
-
     // visualize results
     if (bVis)
     {
