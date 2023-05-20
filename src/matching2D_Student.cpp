@@ -83,7 +83,6 @@ void descKeypoints(vector<cv::KeyPoint> &keypoints, cv::Mat &img, cv::Mat &descr
         extractor = cv::xfeatures2d::SIFT::create();
     }
     // perform feature description
-    double t = (double)cv::getTickCount();
     extractor->compute(img, keypoints, descriptors);
 
 }
