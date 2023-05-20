@@ -41,6 +41,7 @@ int main(int argc, const char *argv[])
     bool bVis = false;            // visualize results
     std::vector<std::string> detTypes = {"HARRIS", "SHITOMASI", "BRIEF", "FAST", "ORB", "AKAZE", "SIFT"};
     
+    
     /* MAIN LOOP OVER ALL IMAGES */
     for (size_t imgIndex = 0; imgIndex <= imgEndIndex - imgStartIndex; imgIndex++)
     {
@@ -68,7 +69,7 @@ int main(int argc, const char *argv[])
     dataBuffer.push_back(frame);
 
     //// EOF STUDENT ASSIGNMENT
-    cout << "#1 : LOAD IMAGE INTO BUFFER done" << endl;
+    // cout << "#1 : LOAD IMAGE INTO BUFFER done" << endl;
 
     /* DETECT IMAGE KEYPOINTS */
 
@@ -127,12 +128,12 @@ int main(int argc, const char *argv[])
         keypoints.erase(keypoints.begin() + maxKeypoints, keypoints.end());
     }
     cv::KeyPointsFilter::retainBest(keypoints, maxKeypoints);
-    cout << " NOTE: Keypoints have been limited!" << endl;
+    // cout << " NOTE: Keypoints have been limited!" << endl;
     }
 
     // push keypoints and descriptor for current frame to end of data buffer
     (dataBuffer.end() - 1)->keypoints = keypoints;
-    cout << "#2 : DETECT KEYPOINTS done" << endl;
+    // cout << "#2 : DETECT KEYPOINTS done" << endl;
 
     /* EXTRACT KEYPOINT DESCRIPTORS */
 
@@ -148,7 +149,7 @@ int main(int argc, const char *argv[])
     // push descriptors for current frame to end of data buffer
     (dataBuffer.end() - 1)->descriptors = descriptors;
 
-    cout << "#3 : EXTRACT DESCRIPTORS done" << endl;
+    // cout << "#3 : EXTRACT DESCRIPTORS done" << endl;
 
     if (dataBuffer.size() > 1) // wait until at least two images have been processed
     {
@@ -173,7 +174,7 @@ int main(int argc, const char *argv[])
     // store matches in current data frame
     (dataBuffer.end() - 1)->kptMatches = matches;
 
-    cout << "#4 : MATCH KEYPOINT DESCRIPTORS done" << endl;
+    // cout << "#4 : MATCH KEYPOINT DESCRIPTORS done" << endl;
 
     // visualize matches between current and previous image
     bVis = false;
@@ -189,7 +190,7 @@ int main(int argc, const char *argv[])
         string windowName = "Matching keypoints between two camera images";
         cv::namedWindow(windowName, 7);
         cv::imshow(windowName, matchImg);
-        cout << "Press key to continue to next image" << endl;
+        // cout << "Press key to continue to next image" << endl;
         cv::waitKey(0); // wait for key to be pressed
     }
     bVis = false;
