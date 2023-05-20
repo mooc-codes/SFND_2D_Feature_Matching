@@ -100,7 +100,7 @@ int main(int argc, const char *argv[])
                     detKeypointsModern(keypoints, imgGray, detectorType, false);
                     }
                     t = ((double)cv::getTickCount() - t) / cv::getTickFrequency();
-                    cout << detectorType <<" detection with n=" << keypoints.size() << " keypoints in " << 1000 * t / 1.0 << " ms" << endl;
+                    
                     //// EOF STUDENT ASSIGNMENT
 
                     //// STUDENT ASSIGNMENT
@@ -122,7 +122,7 @@ int main(int argc, const char *argv[])
 
                     keypoints = tempPoints;
                     }
-                    cout << "Preceeding vehicle has "<<keypoints.size()<<" keypoints "<<std::endl;
+                    
                     //// EOF STUDENT ASSIGNMENT
 
                     // optional : limit number of keypoints (helpful for debugging and learning)
@@ -151,7 +151,10 @@ int main(int argc, const char *argv[])
 
                     cv::Mat descriptors;
                     string descriptorType = descType; // BRIEF, ORB, FREAK, AKAZE, SIFT
+                    t = (double)cv::getTickCount();
                     descKeypoints((dataBuffer.end() - 1)->keypoints, (dataBuffer.end() - 1)->cameraImg, descriptors, descriptorType);
+                    t = ((double)cv::getTickCount() - t) / cv::getTickFrequency();
+                    
                     //// EOF STUDENT ASSIGNMENT
 
                     // push descriptors for current frame to end of data buffer
@@ -183,6 +186,10 @@ int main(int argc, const char *argv[])
                     (dataBuffer.end() - 1)->kptMatches = matches;
 
                     // cout << "#4 : MATCH KEYPOINT DESCRIPTORS done" << endl;
+                    cout << "----------------------------------------------------" << std::endl;
+                    cout << "Preceeding vehicle has "<<keypoints.size()<<" keypoints "<<std::endl;
+                    cout << detectorType <<" detection with n=" << keypoints.size() << " keypoints in " << 1000 * t / 1.0 << " ms" << endl;
+                    cout << descriptorType << " descriptor extraction in " << 1000 * t / 1.0 << " ms" << endl;
 
                     // visualize matches between current and previous image
                     bVis = false;
