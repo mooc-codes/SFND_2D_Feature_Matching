@@ -196,7 +196,8 @@ int main(int argc, const char *argv[])
                     {
                         combinationFile << combinationData.str();
                     }
-                    cout<<"Writing to file done"<<std::endl;
+                    else
+                        cout<<"could not write to file"<<std::endl;
                     // visualize matches between current and previous image
                     // bVis = false;
                     // if (bVis)
