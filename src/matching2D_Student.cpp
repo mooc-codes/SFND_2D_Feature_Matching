@@ -226,6 +226,11 @@ void detKeypointsModern(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, std:
         cv::Ptr<cv::xfeatures2d::SIFT> detector = cv::xfeatures2d::SIFT::create();
         detector->detect(img, keypoints);
     }
+    else if(detectorType.compare("FREAK") == 0)
+    {
+        cv::Ptr<cv::xfeatures2d::FREAK> freak = cv::xfeatures2d::FREAK::create();
+        detector->detect(img, keypoints);
+    }
     else
     {
         std::cout << "UNKOWN DETECTOR TYPE" << std::endl;
