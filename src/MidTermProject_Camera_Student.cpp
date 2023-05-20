@@ -195,6 +195,7 @@ int main(int argc, const char *argv[])
                     cout << combinationData.str();
                     if (combinationFile.is_open())
                     {
+                        combinationData.seekg(0)
                         combinationFile << combinationData.rdbuf();
                     }
                     else
