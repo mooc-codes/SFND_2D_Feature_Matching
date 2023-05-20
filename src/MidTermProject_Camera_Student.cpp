@@ -188,13 +188,13 @@ int main(int argc, const char *argv[])
 
                     // cout << "#4 : MATCH KEYPOINT DESCRIPTORS done" << endl;
 
-                    std::ostringstream combinationData; // 
+                    std::stringstream combinationData; // 
                     combinationData << detType << ", " << 1000 * detTime / 1.0 << ", ";
                     combinationData << descType << ", " << 1000 * descTime / 1.0 << ", ";
                     combinationData << "Keypoints, " << keypoints.size() << "Matches, " << matches.size() << std::endl;
                     if (combinationFile.is_open())
                     {
-                        combinationFile << combinationData.str();
+                        combinationFile << combinationData.rdbuf();
                     }
                     else
                         cout<<"could not write to file"<<std::endl;
