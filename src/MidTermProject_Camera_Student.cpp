@@ -191,11 +191,11 @@ int main(int argc, const char *argv[])
                     std::stringstream combinationData; // 
                     combinationData << detType << ", " << 1000 * detTime / 1.0 << ", ";
                     combinationData << descType << ", " << 1000 * descTime / 1.0 << ", ";
-                    combinationData << "Keypoints, " << keypoints.size() << "Matches, " << matches.size() << std::endl;
+                    combinationData << "Keypoints, " << keypoints.size() << ", Matches, " << matches.size() << std::endl;
                     cout << combinationData.str();
                     if (combinationFile.is_open())
                     {
-                        combinationData.seekg(0)
+                        combinationData.seekg(0);
                         combinationFile << combinationData.rdbuf();
                     }
                     else
