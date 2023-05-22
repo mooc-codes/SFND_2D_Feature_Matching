@@ -41,7 +41,7 @@ int main(int argc, const char *argv[])
     bool bVis = false;            // visualize results
 
     /* MAIN LOOP OVER ALL IMAGES */
-    string detectorTypes = "AKAZE";
+    string detectorTypes = {"AKAZE"};
     string descriptorType = "AKAZE"; // BRIEF, ORB, FREAK, AKAZE, SIFT
 
     for (std::string detectorType: detectorTypes)
