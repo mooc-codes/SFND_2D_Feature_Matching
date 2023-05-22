@@ -229,7 +229,7 @@ int main(int argc, const char *argv[])
     logData << detectorType << ": " << detection_time << " | ";
     logData << descriptorType << ": " << description_time << " | ";
     logData << "Keypoints: "<<keypoints.size()<<" | ";
-    logData << "Neighborhood size: ("<<neighborhood_mean<<", "<<neighborhood_variance<<","<<std::endl;
+    logData << "Neighborhood size: ("<<neighborhood_mean<<", "<<neighborhood_variance<<")"<<std::endl;
     std::cout << logData.str();
     return 0;
 }
