@@ -43,10 +43,15 @@ int main(int argc, const char *argv[])
     /* MAIN LOOP OVER ALL IMAGES */
     string detectorType = "SHITOMASI";
     string descriptorType = "BRISK"; // BRIEF, ORB, FREAK, AKAZE, SIFT
+
     vector<cv::KeyPoint> keypoints; // create empty feature list for current image
     vector<cv::DMatch> matches;
+
+    std::vector<double> keypointSizes;
+
     double detection_time = 0.0;
     double description_time = 0.0;
+
     for (size_t imgIndex = 0; imgIndex <= imgEndIndex - imgStartIndex; imgIndex++)
     {
         /* LOAD IMAGE INTO BUFFER */
@@ -119,6 +124,10 @@ int main(int argc, const char *argv[])
 
         keypoints = tempPoints;
         }
+
+        // log keypoint sizes to vector for computing neighborhood distribution later
+        std::cout<<keypoints[0].size<<std::endl;
+
 
         //// EOF STUDENT ASSIGNMENT
 
@@ -204,6 +213,10 @@ int main(int argc, const char *argv[])
     // Compute the average times for detection and description
     detection_time /= 10;
     description_time /= 10;
+
+    // compute keypoint neighborhood size distribution
+
+
     std::stringstream logData;
     logData << detectorType << ": " << detection_time << " | ";
     logData << descriptorType << ": " << description_time << " | ";

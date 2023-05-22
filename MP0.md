@@ -43,3 +43,8 @@ for(auto &point : keypoints)
 }
 ```
 The coordinates of the keypoints is checked against the `cv::Rect` and only the points that lie inside the rectanle are retained.
+
+
+### MP.7
+
+>Count the number of keypoints on the preceding vehicle for all 10 images and take note of the distribution of their neighborhood size. Do this for all the detectors you have implemented.
