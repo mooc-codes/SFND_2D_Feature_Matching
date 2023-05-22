@@ -210,7 +210,10 @@ double detKeypointsModern(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, st
     {
         detector = cv::BRISK::create();
     }
-    
+    else if (detectorType.compare("ORB") == 0)
+    {
+        detector = cv::ORB::create();
+    }
     double t = (double)cv::getTickCount();
     detector->detect(img, keypoints);
     t = ((double)cv::getTickCount() - t) / cv::getTickFrequency();
