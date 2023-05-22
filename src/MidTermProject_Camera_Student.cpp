@@ -222,7 +222,7 @@ int main(int argc, const char *argv[])
     double neighborhood_variance = 0.0;
     for(const auto keypoint_size: keypointSizes)
     {
-        neighborhood_variance += (keypoint_size - mean) * (keypoint_size - mean);
+        neighborhood_variance += (keypoint_size - neighborhood_mean) * (keypoint_size - neighborhood_mean);
     }
 
     std::stringstream logData;
