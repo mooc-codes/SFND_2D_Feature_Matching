@@ -37,8 +37,8 @@ int main(int argc, const char *argv[])
 
     // misc
     bool bVis = false;            // visualize results
-    std::vector<std::string> detTypes = {"SIFT"};//, "FAST", "ORB", "AKAZE", "SIFT"};
-    std::vector<std::string> descTypes = {"BRIEF", "FREAK", "SIFT", "ORB", };
+    std::vector<std::string> detTypes = {"HARRIS"};//, "FAST", "ORB", "AKAZE", "SIFT"};
+    std::vector<std::string> descTypes = {"BRIEF", "ORB", "FREAK", "AKAZE", "SIFT" };
     
     std::ofstream combinationFile("combination.csv");  
     for(auto detType : detTypes)
