@@ -41,8 +41,8 @@ int main(int argc, const char *argv[])
     bool bVis = false;            // visualize results
 
     /* MAIN LOOP OVER ALL IMAGES */
-    string detectorType = "HARRIS";
-    string descriptorType = "SIFT"; // BRIEF, ORB, FREAK, AKAZE, SIFT
+    string detectorType = "FAST";
+    string descriptorType = "BRISK"; // BRIEF, ORB, FREAK, AKAZE, SIFT
 
     vector<cv::KeyPoint> keypoints; // create empty feature list for current image
     vector<cv::DMatch> matches;
@@ -102,7 +102,7 @@ int main(int argc, const char *argv[])
         }
         else if (detectorType.compare("HARRIS") == 0)
         {
-            detection_time += detKeypointsHarris(keypoints, imgGray, true);
+            detection_time += detKeypointsHarris(keypoints, imgGray, false);
         }
         //// EOF STUDENT ASSIGNMENT
 

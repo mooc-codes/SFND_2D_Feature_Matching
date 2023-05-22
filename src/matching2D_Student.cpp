@@ -196,3 +196,30 @@ double  detKeypointsHarris(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, b
 
     return t;    
 }
+
+double detKeypointsModern(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, std::string detectorType, bool bVis)
+{
+
+    cv::Ptr<FeatureDetector> detector;
+
+    if (detectorType.compare("FAST") == 0) 
+    {
+        cv::Ptr<cv::FastFeatureDetector> detector = cv::FastFeatureDetector::create();
+    }
+
+    double t = (double)cv::getTickCount();
+    detector->detect(img, keypoints);
+    t = ((double)cv::getTickCount() - t) / cv::getTickFrequency();
+
+    if(bVis)
+    {
+        string windowName = detectorType + " Keypoint detection";
+        cv::namedWindow(windowName, 5);
+        cv::Mat visImage = img.clone();
+        cv::drawKeypoints(img, keyPoints, visImage, cv::Scalar::all(-1), cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
+        cv::imshow(windowName, visImage);
+        cv::waitKey(0);
+    }
+
+    return t;
+}
