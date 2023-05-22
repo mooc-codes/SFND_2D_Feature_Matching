@@ -45,9 +45,28 @@ for(auto &point : keypoints)
 The coordinates of the keypoints is checked against the `cv::Rect` and only the points that lie inside the rectanle are retained.
 
 
+### MP.6
+> Use the K-Nearest-Neighbor matching to implement the descriptor distance ratio test, which looks at the ratio of best vs. second-best match to decide whether to keep an associated pair of keypoints.
+
+```C++
+    std::vector<std::vector<cv::DMatch>> knnMatches;
+    matcher->knnMatch(descSource, descRef, knnMatches, 2);
+
+
+    float ratioThreshold = 0.8f;  // Ratio threshold for filtering good matches
+
+    for (size_t i = 0; i < knnMatches.size(); ++i)
+    {
+        if (knnMatches[i][0].distance < ratioThreshold * knnMatches[i][1].distance) 
+        {
+            matches.push_back(knnMatches[i][0]);
+        }
+    }
+```
+
 ### MP.7
 
->Count the number of keypoints on the preceding vehicle for all 10 images and take note of the distribution of their neighborhood size. Do this for all the detectors you have implemented.
+> Count the number of keypoints on the preceding vehicle for all 10 images and take note of the distribution of their neighborhood size. Do this for all the detectors you have implemented.
 
 ```C++
     // compute keypoint neighborhood size distribution
