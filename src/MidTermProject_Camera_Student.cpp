@@ -42,7 +42,7 @@ int main(int argc, const char *argv[])
 
     /* MAIN LOOP OVER ALL IMAGES */
     string detectorType = "SHITOMASI";
-    string descriptorType = "FREAK"; // BRIEF, ORB, FREAK, AKAZE, SIFT
+    string descriptorType = "SIFT"; // BRIEF, ORB, FREAK, AKAZE, SIFT
 
     vector<cv::KeyPoint> keypoints; // create empty feature list for current image
     vector<cv::DMatch> matches;

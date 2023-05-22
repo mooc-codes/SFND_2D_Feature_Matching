@@ -74,6 +74,10 @@ double descKeypoints(vector<cv::KeyPoint> &keypoints, cv::Mat &img, cv::Mat &des
     {
         extractor = cv::xfeatures2d::FREAK::create();
     }
+    else if (descriptorType.compare("SIFT") == 0)
+    {
+        extractor = cv::xfeatures2d::SIFT::create();
+    }
 
 
     // perform feature description
