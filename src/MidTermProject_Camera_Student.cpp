@@ -39,14 +39,16 @@ int main(int argc, const char *argv[])
     bool bVis = false;            // visualize results
     std::vector<std::string> detTypes = {"SHITHOMASI"};//, "FAST", "ORB", "AKAZE", "SIFT"};
     std::vector<std::string> descTypes = {"BRIEF", "ORB", "FREAK", "AKAZE", "SIFT" };
-    
+
+    int dataBufferSize = 2;       // no. of images which are held in memory (ring buffer) at the same time
+    vector<DataFrame> dataBuffer(dataBufferSize); // list of data frames which are held in memory at the same time
+
     std::ofstream combinationFile("combination.csv");  
     for(auto detType : detTypes)
     {   
         for(auto descType : descTypes)
         {
-                    int dataBufferSize = 2;       // no. of images which are held in memory (ring buffer) at the same time
-                    vector<DataFrame> dataBuffer(dataBufferSize); // list of data frames which are held in memory at the same time
+                    dataBuffer.clear();
                     /* MAIN LOOP OVER ALL IMAGES */
                     for (size_t imgIndex = 0; imgIndex <= imgEndIndex - imgStartIndex; imgIndex++)
                     {
