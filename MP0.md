@@ -44,6 +44,19 @@ for(auto &point : keypoints)
 ```
 The coordinates of the keypoints is checked against the `cv::Rect` and only the points that lie inside the rectanle are retained.
 
+### MP.5
+> Implement FLANN matching as well as k-nearest neighbor selection. Both methods must be selectable using the respective strings in the main function.
+
+```C++
+
+    else if (matcherType.compare("MAT_FLANN") == 0)
+    {
+        descSource.convertTo(descSource, CV_32F);
+        descRef.convertTo(descRef, CV_32F);
+        matcher = cv::FlannBasedMatcher::create(); 
+    }
+```
+The images need to be converted since FLANN uses a float type.
 
 ### MP.6
 > Use the K-Nearest-Neighbor matching to implement the descriptor distance ratio test, which looks at the ratio of best vs. second-best match to decide whether to keep an associated pair of keypoints.
