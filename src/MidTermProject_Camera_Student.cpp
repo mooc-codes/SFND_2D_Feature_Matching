@@ -48,6 +48,7 @@ int main(int argc, const char *argv[])
     vector<cv::DMatch> matches;
 
     std::vector<double> keypointSizes;
+    std::vector<size_t> numMatches;
 
     double detection_time = 0.0;
     double description_time = 0.0;
@@ -183,7 +184,8 @@ int main(int argc, const char *argv[])
             matchDescriptors((dataBuffer.end() - 2)->keypoints, (dataBuffer.end() - 1)->keypoints,
                              (dataBuffer.end() - 2)->descriptors, (dataBuffer.end() - 1)->descriptors,
                              matches, descriptorType, matcherType, selectorType);
-
+            // Log the number of matches
+            numMatches.push_back(matches.size());
             //// EOF STUDENT ASSIGNMENT
 
             // store matches in current data frame
@@ -230,7 +232,13 @@ int main(int argc, const char *argv[])
     logData << detectorType << ": " << detection_time << " | ";
     logData << descriptorType << ": " << description_time << " | ";
     logData << "Keypoints: "<<keypoints.size()<<" | ";
-    logData << "Neighborhood size: ("<<neighborhood_mean<<", "<<neighborhood_variance<<")"<<std::endl;
+    logData << "Neighborhood size: ("<<neighborhood_mean<<", "<<neighborhood_variance<<")"<< std::endl;
+    logData << "Matches : [ ";
+    for (const size_t nMatches: numMatches)
+    {
+        logData << nMatches<< " ";
+    }
+    logData << "]" << std::endl;
     std::cout << logData.str();
     return 0;
 }
