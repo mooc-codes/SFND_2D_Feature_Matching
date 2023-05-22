@@ -48,3 +48,15 @@ The coordinates of the keypoints is checked against the `cv::Rect` and only the 
 ### MP.7
 
 >Count the number of keypoints on the preceding vehicle for all 10 images and take note of the distribution of their neighborhood size. Do this for all the detectors you have implemented.
+
+```C++
+    // compute keypoint neighborhood size distribution
+    double neighborhood_mean = std::accumulate(keypointSizes.begin(), keypointSizes.end(), 0.0) / keypointSizes.size();
+    double neighborhood_variance = 0.0;
+    for(const auto keypoint_size: keypointSizes)
+    {
+        neighborhood_variance += (keypoint_size - neighborhood_mean) * (keypoint_size - neighborhood_mean);
+    }
+```
+
+To understand the distribution of neighborhood sizes, we store the sizes of keypoints in bounded area from all 10 images and compute the mean and variance of the size distribution.
