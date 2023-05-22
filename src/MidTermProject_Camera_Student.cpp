@@ -43,6 +43,8 @@ int main(int argc, const char *argv[])
     /* MAIN LOOP OVER ALL IMAGES */
     string detectorType = "SHITOMASI";
     string descriptorType = "BRISK"; // BRIEF, ORB, FREAK, AKAZE, SIFT
+    vector<cv::KeyPoint> keypoints; // create empty feature list for current image
+    vector<cv::DMatch> matches;
     double detection_time = 0.0;
     double description_time = 0.0;
     for (size_t imgIndex = 0; imgIndex <= imgEndIndex - imgStartIndex; imgIndex++)
@@ -83,8 +85,7 @@ int main(int argc, const char *argv[])
         /* DETECT IMAGE KEYPOINTS */
 
         // extract 2D keypoints from current image
-        vector<cv::KeyPoint> keypoints; // create empty feature list for current image
-
+        keypoints.clear();
         //// STUDENT ASSIGNMENT
         //// TASK MP.2 -> add the following keypoint detectors in file matching2D.cpp and enable string-based selection based on detectorType
         //// -> HARRIS, FAST, BRISK, ORB, AKAZE, SIFT
@@ -149,8 +150,7 @@ int main(int argc, const char *argv[])
         {
 
             /* MATCH KEYPOINT DESCRIPTORS */
-
-            vector<cv::DMatch> matches;
+            matches.clear();
             string matcherType = "MAT_BF";        // MAT_BF, MAT_FLANN
             string descriptorType = "DES_BINARY"; // DES_BINARY, DES_HOG
             string selectorType = "SEL_NN";       // SEL_NN, SEL_KNN
