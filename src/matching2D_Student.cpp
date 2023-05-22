@@ -78,7 +78,10 @@ double descKeypoints(vector<cv::KeyPoint> &keypoints, cv::Mat &img, cv::Mat &des
     {
         extractor = cv::xfeatures2d::SIFT::create();
     }
-
+    else if (descriptorType.compare("AKAZE") == 0)
+    {
+        extractor = cv::AKAZE::create();
+    }
 
     // perform feature description
     double t = (double)cv::getTickCount();
