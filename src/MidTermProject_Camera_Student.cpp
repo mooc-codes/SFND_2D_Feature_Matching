@@ -44,7 +44,7 @@ int main(int argc, const char *argv[])
     string detectorTypes = {"AKAZE"};
     string descriptorType = "AKAZE"; // BRIEF, ORB, FREAK, AKAZE, SIFT
 
-    for (std::string detectorType: detectorTypes)
+    for (auto detectorType: detectorTypes)
     {
         vector<cv::KeyPoint> keypoints; // create empty feature list for current image
         vector<cv::DMatch> matches;
