@@ -66,6 +66,10 @@ double descKeypoints(vector<cv::KeyPoint> &keypoints, cv::Mat &img, cv::Mat &des
     {
         extractor = cv::xfeatures2d::BriefDescriptorExtractor::create();
     }
+    else if (descriptorType.compare("ORB") == 0)
+    {
+        extractor = cv::ORB::create();
+    }
 
     // perform feature description
     double t = (double)cv::getTickCount();
