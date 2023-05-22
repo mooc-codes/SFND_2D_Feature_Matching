@@ -200,7 +200,7 @@ double  detKeypointsHarris(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, b
 double detKeypointsModern(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, std::string detectorType, bool bVis)
 {
 
-    cv::Ptr<FeatureDetector> detector;
+    cv::Ptr<cv::FeatureDetector> detector;
 
     if (detectorType.compare("FAST") == 0) 
     {
