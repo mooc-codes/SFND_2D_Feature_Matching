@@ -204,7 +204,7 @@ double detKeypointsModern(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, st
 
     if (detectorType.compare("FAST") == 0) 
     {
-        cv::Ptr<cv::FastFeatureDetector> detector = cv::FastFeatureDetector::create();
+        detector = cv::FastFeatureDetector::create();
     }
 
     double t = (double)cv::getTickCount();
