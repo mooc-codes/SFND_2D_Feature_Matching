@@ -106,7 +106,7 @@ int main(int argc, const char *argv[])
         }
         else
         {
-            detection_time += detKeypointsModern(keypoints, imgGray, detectorType, false)
+            detection_time += detKeypointsModern(keypoints, imgGray, detectorType, false);
         }
         //// EOF STUDENT ASSIGNMENT
 
