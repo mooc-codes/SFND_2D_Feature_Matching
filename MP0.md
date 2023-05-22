@@ -21,3 +21,25 @@ This document addresses the first point in the rubric
 ```
 
 If the data buffer is full, the first (oldest) frame is removed and new frame is inserted, otherwise the incoming new frame is insterted without removing any older frames.
+
+
+### MP.3
+
+>Remove all keypoints outside of a pre-defined rectangle and only use the keypoints within the rectangle for further processing.
+
+```C++
+// only keep keypoints on the preceding vehicle
+bool bFocusOnVehicle = true;
+cv::Rect vehicleRect(535, 180, 180, 150);
+if (bFocusOnVehicle)
+{
+std::vector<cv::KeyPoint> tempPoints;
+for(auto &point : keypoints)
+{
+    if(vehicleRect.contains(point.pt))
+    {
+        tempPoints.push_back(point);
+    }
+}
+```
+The coordinates of the keypoints is checked against the `cv::Rect` and only the points that lie inside the rectanle are retained.
