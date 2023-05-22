@@ -104,6 +104,10 @@ int main(int argc, const char *argv[])
         {
             detection_time += detKeypointsHarris(keypoints, imgGray, false);
         }
+        else
+        {
+            detection_time += detKeypointsModern(keypoints, imgGray, detectorType, false)
+        }
         //// EOF STUDENT ASSIGNMENT
 
         //// STUDENT ASSIGNMENT
