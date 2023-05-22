@@ -192,5 +192,13 @@ int main(int argc, const char *argv[])
 
     } // eof loop over all images
 
+    // Compute the average times for detection and description
+    detection_time /= 10;
+    description_time /= 10;
+    std::stringstream logData;
+    logData << detectorType << ": " << detection_time << " | ";
+    logData << descriptorType << ": " << description_time << " | ";
+    logData << "Keypoints: "<<keypoints.size()<<std::endl;
+    std::cout << logData.str();
     return 0;
 }
