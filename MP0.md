@@ -57,6 +57,8 @@ The coordinates of the keypoints is checked against the `cv::Rect` and only the 
     {
         neighborhood_variance += (keypoint_size - neighborhood_mean) * (keypoint_size - neighborhood_mean);
     }
+    neighborhood_variance /= keypointSizes.size();
+    
 ```
 
 To understand the distribution of neighborhood sizes, we store the sizes of keypoints in bounded area from all 10 images and compute the mean and variance of the size distribution.

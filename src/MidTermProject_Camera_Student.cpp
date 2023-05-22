@@ -224,7 +224,8 @@ int main(int argc, const char *argv[])
     {
         neighborhood_variance += (keypoint_size - neighborhood_mean) * (keypoint_size - neighborhood_mean);
     }
-
+    neighborhood_variance /= keypointSizes.size();
+    
     std::stringstream logData;
     logData << detectorType << ": " << detection_time << " | ";
     logData << descriptorType << ": " << description_time << " | ";
