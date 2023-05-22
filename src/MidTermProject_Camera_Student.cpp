@@ -41,7 +41,7 @@ int main(int argc, const char *argv[])
     bool bVis = false;            // visualize results
 
     /* MAIN LOOP OVER ALL IMAGES */
-    string detectorType = "FAST";
+    string detectorType = "BRISK";
     string descriptorType = "BRISK"; // BRIEF, ORB, FREAK, AKAZE, SIFT
 
     vector<cv::KeyPoint> keypoints; // create empty feature list for current image
