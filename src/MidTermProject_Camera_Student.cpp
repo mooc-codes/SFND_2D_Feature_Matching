@@ -173,7 +173,7 @@ int main(int argc, const char *argv[])
 
             /* MATCH KEYPOINT DESCRIPTORS */
             matches.clear();
-            string matcherType = "MAT_BF";        // MAT_BF, MAT_FLANN
+            string matcherType = "MAT_FLANN";        // MAT_BF, MAT_FLANN
             string descriptorType = "DES_BINARY"; // DES_BINARY, DES_HOG
             string selectorType = "SEL_KNN";       // SEL_NN, SEL_KNN
 
