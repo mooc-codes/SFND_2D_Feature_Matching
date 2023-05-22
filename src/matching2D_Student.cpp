@@ -82,7 +82,10 @@ double descKeypoints(vector<cv::KeyPoint> &keypoints, cv::Mat &img, cv::Mat &des
     {
         extractor = cv::AKAZE::create();
     }
-
+    else
+    {
+        std::cout<<descriptorType << " UNKOWN"<<std::endl;
+    }
     // perform feature description
     double t = (double)cv::getTickCount();
     extractor->compute(img, keypoints, descriptors);
@@ -224,6 +227,10 @@ double detKeypointsModern(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, st
     else if (detectorType.compare("AKAZE") == 0)
     {
         detector = cv::AKAZE::create();
+    }
+    else
+    {
+        std::cout<<detectorType<<" UNKOWN"<<std::endl;
     }
     double t = (double)cv::getTickCount();
     detector->detect(img, keypoints);
