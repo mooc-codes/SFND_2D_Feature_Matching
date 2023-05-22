@@ -222,6 +222,7 @@ double detKeypointsModern(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, st
     }
     else if (detectorType.compare("SIFT") == 0)
     {
+        img.convertTo(img, CV_32F);
         detector = cv::xfeatures2d::SIFT::create();
     }
     else if (detectorType.compare("AKAZE") == 0)
