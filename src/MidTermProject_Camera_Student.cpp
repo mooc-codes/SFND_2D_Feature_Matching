@@ -38,7 +38,7 @@ int main(int argc, const char *argv[])
     // misc
     bool bVis = false;            // visualize results
     std::vector<std::string> detTypes = {"SIFT"};//, "FAST", "ORB", "AKAZE", "SIFT"};
-    std::vector<std::string> descTypes = {"BRIEF", "ORB", "FREAK", "AKAZE", "SIFT" };
+    std::vector<std::string> descTypes = {"BRIEF", "FREAK", "AKAZE", "SIFT" };
 
     int dataBufferSize = 2;       // no. of images which are held in memory (ring buffer) at the same time
     vector<DataFrame> dataBuffer(dataBufferSize); // list of data frames which are held in memory at the same time
