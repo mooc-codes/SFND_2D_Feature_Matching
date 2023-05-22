@@ -126,7 +126,10 @@ int main(int argc, const char *argv[])
         }
 
         // log keypoint sizes to vector for computing neighborhood distribution later
-        std::cout<<keypoints[0].size<<std::endl;
+        for(const auto &keypoint: keypoints)
+        {
+            keypointSizes.push_back(keypoint.size);
+        }
 
 
         //// EOF STUDENT ASSIGNMENT
@@ -215,12 +218,18 @@ int main(int argc, const char *argv[])
     description_time /= 10;
 
     // compute keypoint neighborhood size distribution
-
+    double neighborhood_mean = std::accumulate(keypointSizes.begin(), keypointSizes.end(), 0.0) / keypointSizes.size();
+    double neighborhood_variance = 0.0;
+    for(const auto keypoint_size: keypointSizes)
+    {
+        neighborhood_variance += (keypoint_size - mean) * (keypoint_size - mean);
+    }
 
     std::stringstream logData;
     logData << detectorType << ": " << detection_time << " | ";
     logData << descriptorType << ": " << description_time << " | ";
-    logData << "Keypoints: "<<keypoints.size()<<std::endl;
+    logData << "Keypoints: "<<keypoints.size()<<" | ";
+    logData << "Neighborhood size: ("<<neighborhood_mean<<", "<<neighborhood_variance<<","<<std::endl;
     std::cout << logData.str();
     return 0;
 }
