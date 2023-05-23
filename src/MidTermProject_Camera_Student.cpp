@@ -42,7 +42,7 @@ int main(int argc, const char *argv[])
 
     /* MAIN LOOP OVER ALL IMAGES */
     std::vector<string>detectorTypes = {"SHITOMASI" , "FAST", "BRISK", "ORB", "AKAZE", "SIFT"};
-    string descriptorType = "BRISK"; // BRIEF, ORB, FREAK, AKAZE, SIFT
+    string descriptorType = "BRIEF"; // BRIEF, ORB, FREAK, AKAZE, SIFT
 
     for (string detectorType: detectorTypes)
     {
@@ -236,15 +236,15 @@ int main(int argc, const char *argv[])
         neighborhood_variance /= keypointSizes.size();
 
         std::stringstream logData;
-        logData << detectorType << ", " << detection_time << ", ";
-        logData << descriptorType << ", " << description_time << ", ";
-        logData << neighborhood_mean<<", "<< neighborhood_variance << std::endl;
-        logData << "Keypoints : [ ";
-        for (const size_t nKpts: numKeypoints)
-        {
-            logData << nKpts<< " ";
-        } 
-        logData << "]" << std::endl;
+        logData << detectorType << ", " << descriptorType << ", ";
+        logData << detection_time << ", " << description_time << ", " << std::endl;
+        // logData << neighborhood_mean<<", "<< neighborhood_variance << std::endl;
+        // logData << "Keypoints : [ ";
+        // for (const size_t nKpts: numKeypoints)
+        // {
+        //     logData << nKpts<< " ";
+        // } 
+        // logData << "]" << std::endl;
         logData << "Matches : [ ";
         for (const size_t nMatches: numMatches)
         {
