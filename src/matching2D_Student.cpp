@@ -153,7 +153,6 @@ double  detKeypointsHarris(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, b
     int response;
     bool isOverlap;
     double maxOverlap = 0.0;
-    std::vector<cv::KeyPoint> keyPoints;
 
     double t = (double)cv::getTickCount();
     for(size_t j = 0; j < dst_norm.rows; j++)
@@ -169,7 +168,7 @@ double  detKeypointsHarris(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, b
                 newKeyPoint.size = 2 * aperturesize;
 
                 isOverlap = false;
-                for(auto it = keyPoints.begin(); it != keyPoints.end(); it++)
+                for(auto it = keypoints.begin(); it != keypoints.end(); it++)
                 {
                     if(cv::KeyPoint::overlap(newKeyPoint, *it) > maxOverlap)
                     {
@@ -183,7 +182,7 @@ double  detKeypointsHarris(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, b
                 }
                 if(!isOverlap)
                 {
-                    keyPoints.push_back(newKeyPoint);
+                    keypoints.push_back(newKeyPoint);
                 }
             }
         }
