@@ -193,9 +193,6 @@ int main(int argc, const char *argv[])
                     descRef.convertTo(descRef, CV_8U); 
                 }
 
-                string descriptorType = descriptorType.compare("SIFT") == 0  ? "DES_HOG" : "DES_BINARY"; // DES_BINARY, DES_HOG
-                string selectorType = "SEL_KNN";       // SEL_NN, SEL_KNN
-
                 //// STUDENT ASSIGNMENT
                 //// TASK MP.5 -> add FLANN matching in file matching2D.cpp
                 //// TASK MP.6 -> add KNN match selection and perform descriptor distance ratio filtering with t=0.8 in file matching2D.cpp
