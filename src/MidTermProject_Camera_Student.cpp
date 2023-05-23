@@ -42,7 +42,7 @@ int main(int argc, const char *argv[])
 
     /* MAIN LOOP OVER ALL IMAGES */
     std::vector<string>detectorTypes = {"SHITOMASI" , "FAST", "BRISK", "ORB", "AKAZE", "SIFT"};
-    string descriptorType = "ORB"; // BRIEF, ORB, FREAK, AKAZE, SIFT
+    string descriptorType = "FREAK"; // BRIEF, ORB, FREAK, AKAZE, SIFT
 
     for (string detectorType: detectorTypes)
     {
