@@ -41,8 +41,8 @@ int main(int argc, const char *argv[])
     bool bVis = false;            // visualize results
 
     /* MAIN LOOP OVER ALL IMAGES */
-    std::vector<string>detectorTypes = {"SHITOMASI" , "FAST", "BRISK", "ORB", "AKAZE", "SIFT"};
-    string descriptorType = "SIFT"; // BRIEF, ORB, FREAK, AKAZE, SIFT
+    std::vector<string>detectorTypes = {"AKAZE"}; //{"SHITOMASI" , "FAST", "BRISK", "ORB", "AKAZE", "SIFT"};
+    string descriptorType = "AKAZE"; // BRIEF, ORB, FREAK, AKAZE, SIFT
 
     for (string detectorType: detectorTypes)
     {
