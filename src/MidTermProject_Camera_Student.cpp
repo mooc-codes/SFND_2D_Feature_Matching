@@ -181,7 +181,8 @@ int main(int argc, const char *argv[])
                 /* MATCH KEYPOINT DESCRIPTORS */
                 matches.clear();
                 string matcherType = "MAT_BF";        // MAT_BF, MAT_FLANN
-                string descriptorType = descriptorType.compare("SIFT") == 0  ? "DES_HOG" : "DES_BINARY"; // DES_BINARY, DES_HOG
+                bool isSIFT = descriptorType.compare("SIFT") == 0 || detectorType.compare("SIFT") == 0;
+                string descriptorType = isSIFT  ? "DES_HOG" : "DES_BINARY"; // DES_BINARY, DES_HOG
                 string selectorType = "SEL_KNN";       // SEL_NN, SEL_KNN
 
                 //// STUDENT ASSIGNMENT

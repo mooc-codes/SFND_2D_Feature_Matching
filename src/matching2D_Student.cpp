@@ -14,11 +14,6 @@ void matchDescriptors(std::vector<cv::KeyPoint> &kPtsSource, std::vector<cv::Key
     if (matcherType.compare("MAT_BF") == 0)
     {
         int normType = descriptorType.compare("DES_HOG") ? cv::NORM_L2 : cv::NORM_HAMMING;
-        if (normType == cv::NORM_L2)
-        {
-            descSource.convertTo(descSource, CV_32F);
-            descRef.convertTo(descRef, CV_32F);
-        }
         matcher = cv::BFMatcher::create(normType, crossCheck);
     }
     else if (matcherType.compare("MAT_FLANN") == 0)
