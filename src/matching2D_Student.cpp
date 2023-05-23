@@ -33,8 +33,9 @@ void matchDescriptors(std::vector<cv::KeyPoint> &kPtsSource, std::vector<cv::Key
     { // k nearest neighbors (k=2)
 
         std::vector<std::vector<cv::DMatch>> knnMatches;
+        std::cout << "MATCH start"<<std::endl;
         matcher->knnMatch(descSource, descRef, knnMatches, 2);
-
+        std::cout << "MATCH end"<<std::endl;
 
         float ratioThreshold = 0.8f;  // Ratio threshold for filtering good matches
 
