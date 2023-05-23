@@ -193,7 +193,7 @@ double  detKeypointsHarris(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, b
         string windowName = "Harris Keypoint detection";
         cv::namedWindow(windowName, 5);
         cv::Mat visImage = img.clone();
-        cv::drawKeypoints(img, keyPoints, visImage, cv::Scalar::all(-1), cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
+        cv::drawKeypoints(img, keypoints, visImage, cv::Scalar::all(-1), cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
         cv::imshow(windowName, visImage);
         cv::waitKey(0);
     }
