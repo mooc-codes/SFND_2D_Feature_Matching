@@ -145,7 +145,7 @@ The images need to be converted since FLANN uses a float type.
     }
 ```
 
-### MP.7
+### MP.7 and MP.8
 
 > Count the number of keypoints on the preceding vehicle for all 10 images and take note of the distribution of their neighborhood size. Do this for all the detectors you have implemented.
 
@@ -162,3 +162,25 @@ The images need to be converted since FLANN uses a float type.
 ```
 
 To understand the distribution of neighborhood sizes, we store the sizes of keypoints in bounded area from all 10 images and compute the mean and variance of the size distribution.
+
+The number of keypoints per image, the number of matches and the distribution of neighborhood sizes are as following
+
+```
+SHI-TOMASI -> neighborhood size distribution (4, 0)
+Keypoints : [ 125 118 123 120 120 113 114 123 111 112 ]
+
+FAST -> neighborhood size distribution (7, 0)
+Keypoints : [ 419 427 404 423 386 414 418 406 396 401 ]
+
+BRISK -> neighborhood size distribution (21.9444, 213.688)
+Keypoints : [ 264 282 282 277 297 279 289 272 266 254 ]
+
+ORB -> neighborhood size distribution (55.9928, 630.76)
+Keypoints : [ 92 102 106 113 109 125 130 129 127 128 ]
+
+AKAZE -> neighborhood size distribution (7.69915, 12.5121)
+Keypoints : [ 166 157 161 155 163 164 173 175 177 179 ]
+
+SIFT -> neighborhood size distribution (5.03738, 35.8244)
+Keypoints : [ 138 132 124 137 134 140 137 148 159 137 ]
+```
