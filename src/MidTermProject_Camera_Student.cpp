@@ -237,7 +237,7 @@ int main(int argc, const char *argv[])
 
         std::stringstream logData;
         logData << detectorType << ", " << descriptorType << ", ";
-        logData << detection_time << ", " << description_time << ", " << std::endl;
+        logData << detection_time << ", " << description_time << ", ";
         // logData << neighborhood_mean<<", "<< neighborhood_variance << std::endl;
         // logData << "Keypoints : [ ";
         // for (const size_t nKpts: numKeypoints)
@@ -245,7 +245,7 @@ int main(int argc, const char *argv[])
         //     logData << nKpts<< " ";
         // } 
         // logData << "]" << std::endl;
-        logData << "Matches : [ ";
+        logData << "[ ";
         for (const size_t nMatches: numMatches)
         {
             logData << nMatches<< " ";
