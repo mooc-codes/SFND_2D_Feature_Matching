@@ -22,6 +22,36 @@ This document addresses the first point in the rubric
 
 If the data buffer is full, the first (oldest) frame is removed and new frame is inserted, otherwise the incoming new frame is insterted without removing any older frames.
 
+### MP.2
+> Implement detectors HARRIS, FAST, BRISK, ORB, AKAZE, and SIFT and make them selectable by setting a string accordingly.
+
+```C++
+
+    cv::Ptr<cv::FeatureDetector> detector;
+
+    if (detectorType.compare("FAST") == 0) 
+    {
+        detector = cv::FastFeatureDetector::create();
+    }
+    else if (detectorType.compare("BRISK") == 0)
+    {
+        detector = cv::BRISK::create();
+    }
+    else if (detectorType.compare("ORB") == 0)
+    {
+        detector = cv::ORB::create();
+    }
+    else if (detectorType.compare("SIFT") == 0)
+    {
+        detector = cv::xfeatures2d::SIFT::create();
+    }
+    else if (detectorType.compare("AKAZE") == 0)
+    {
+        detector = cv::AKAZE::create();
+    }
+
+```
+The modern keypoint detectors are implemented as above and the HARRIS detector is implemented in `detKeypointsHarris()`
 
 ### MP.3
 
@@ -43,6 +73,44 @@ for(auto &point : keypoints)
 }
 ```
 The coordinates of the keypoints is checked against the `cv::Rect` and only the points that lie inside the rectanle are retained.
+
+
+### MP.4
+
+> Implement descriptors BRIEF, ORB, FREAK, AKAZE and SIFT and make them selectable by setting a string accordingly.
+
+```C++
+    cv::Ptr<cv::DescriptorExtractor> extractor;
+    if (descriptorType.compare("BRISK") == 0)
+    {
+
+        int threshold = 30;        // FAST/AGAST detection threshold score.
+        int octaves = 3;           // detection octaves (use 0 to do single scale)
+        float patternScale = 1.0f; // apply this scale to the pattern used for sampling the neighbourhood of a keypoint.
+
+        extractor = cv::BRISK::create(threshold, octaves, patternScale);
+    }
+    else if (descriptorType.compare("ORB") == 0)
+    {
+        extractor = cv::ORB::create();
+    }
+    else if (descriptorType.compare("BRIEF") == 0)
+    {
+        extractor = cv::xfeatures2d::BriefDescriptorExtractor::create();
+    }
+    else if (descriptorType.compare("FREAK") == 0)
+    {
+        extractor = cv::xfeatures2d::FREAK::create();
+    }
+    else if (descriptorType.compare("SIFT") == 0)
+    {
+        extractor = cv::xfeatures2d::SIFT::create();
+    }
+    else if (descriptorType.compare("AKAZE") == 0)
+    {
+        extractor = cv::AKAZE::create();
+    }
+```
 
 ### MP.5
 > Implement FLANN matching as well as k-nearest neighbor selection. Both methods must be selectable using the respective strings in the main function.

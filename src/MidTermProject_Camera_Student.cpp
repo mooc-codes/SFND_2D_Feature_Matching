@@ -50,6 +50,7 @@ int main(int argc, const char *argv[])
         vector<cv::DMatch> matches;
 
         std::vector<double> keypointSizes;
+        std::vector<size_t> numKeypoints;
         std::vector<size_t> numMatches;
 
         double detection_time = 0.0;
@@ -137,7 +138,7 @@ int main(int argc, const char *argv[])
             {
                 keypointSizes.push_back(keypoint.size);
             }
-
+            numKeypoints.push_back(keypoints.size());
 
             //// EOF STUDENT ASSIGNMENT
 
@@ -239,6 +240,12 @@ int main(int argc, const char *argv[])
         logData << descriptorType << ": " << description_time << " | ";
         logData << "Keypoints: "<<keypoints.size()<<" | ";
         logData << "Neighborhood size: ("<<neighborhood_mean<<", "<<neighborhood_variance<<")"<< std::endl;
+        logData << "eypoints : [ ";
+        for (const size_t nKpts: numKeypoints)
+        {
+            logData << nKpts<< " ";
+        } 
+        logData << "]" << std::endl;
         logData << "Matches : [ ";
         for (const size_t nMatches: numMatches)
         {
