@@ -185,8 +185,16 @@ SIFT -> neighborhood size distribution (5.03738, 35.8244)
 Keypoints : [ 138 132 124 137 134 140 137 148 159 137 ]
 ```
 
-### MP.8
+### MP.8 and MP.9
 
 > Count the number of matched keypoints for all 10 images using all possible combinations of detectors and descriptors. In the matching step, the BF approach is used with the descriptor distance ratio set to 0.8.
 
+> Log the time it takes for keypoint detection and descriptor extraction. The results must be entered into a spreadsheet and based on this data, the TOP3 detector / descriptor combinations must be recommended as the best choice for our purpose of detecting keypoints on vehicles.
 
+| Detector | Descriptor | Total time |
+| ---      | ---        | ---        |
+| FAST	   | ORB	    |0.002163264 |																		
+|FAST	   | BRIEF	    |0.002233819 |																	
+|FAST	   | BRISK      |0.00428032	 |															
+
+The full list of combinations with number of keypoints, neighborhood size distribution and number of matches are given in the `MP89.pdf` file
