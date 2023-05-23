@@ -238,7 +238,7 @@ int main(int argc, const char *argv[])
         std::stringstream logData;
         logData << detectorType << ", " << descriptorType << ", ";
         logData << detection_time << ", " << description_time << ", ";
-        logData << "(" << neighborhood_mean<<", "<< neighborhood_variance << "), ";
+        logData <<neighborhood_mean<<", "<< neighborhood_variance << ", ";
         logData << "[ ";
         for (const size_t nKpts: numKeypoints)
         {
