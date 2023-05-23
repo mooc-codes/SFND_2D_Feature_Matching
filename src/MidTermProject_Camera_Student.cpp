@@ -181,8 +181,19 @@ int main(int argc, const char *argv[])
                 /* MATCH KEYPOINT DESCRIPTORS */
                 matches.clear();
                 string matcherType = "MAT_BF";        // MAT_BF, MAT_FLANN
-                bool isSIFT = descriptorType.compare("SIFT") == 0 || detectorType.compare("SIFT") == 0;
-                string descriptorType = isSIFT  ? "DES_HOG" : "DES_BINARY"; // DES_BINARY, DES_HOG
+
+                string descriptorType = descriptorType.compare("SIFT") == 0  ? "DES_HOG" : "DES_BINARY"; // DES_BINARY, DES_HOG
+                string selectorType = "SEL_KNN";       // SEL_NN, SEL_KNN
+
+                auto descSource = (dataBuffer.end() - 2)->descriptors;
+                auto descRef = (dataBuffer.end() - 1)->descriptors;
+                if (detectorType.compare("SIFT") == 0 && descriptorType.compare("SIFT") == 0)
+                {
+                    descSource.convertTo(descSource, CV_8U);
+                    descRef.convertTo(descRef, CV_8U); 
+                }
+
+                string descriptorType = descriptorType.compare("SIFT") == 0  ? "DES_HOG" : "DES_BINARY"; // DES_BINARY, DES_HOG
                 string selectorType = "SEL_KNN";       // SEL_NN, SEL_KNN
 
                 //// STUDENT ASSIGNMENT
@@ -190,7 +201,7 @@ int main(int argc, const char *argv[])
                 //// TASK MP.6 -> add KNN match selection and perform descriptor distance ratio filtering with t=0.8 in file matching2D.cpp
 
                 matchDescriptors((dataBuffer.end() - 2)->keypoints, (dataBuffer.end() - 1)->keypoints,
-                                (dataBuffer.end() - 2)->descriptors, (dataBuffer.end() - 1)->descriptors,
+                                descSource, descRef,
                                 matches, descriptorType, matcherType, selectorType);
                 // Log the number of matches
                 numMatches.push_back(matches.size());
